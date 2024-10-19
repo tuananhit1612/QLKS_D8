@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE7DF128-E71E-4906-9BC0-811E625CC864}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QLKS</RootNamespace>
+    <AssemblyName>QLKS</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu.Dataviz.WinForms, Version=2.1.7.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.1.6\lib\Bunifu.Dataviz.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.1.6\lib\Bunifu.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuButton, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuCheckBox, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuCheckBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuCircleProgress, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuCircleProgress.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuColorTransition, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuColorTransition.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDataGridView, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuFormDock, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuFormDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGauge, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuGauge.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGradientPanel, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuGradientPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGroupBox, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuGroupBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuImageButton, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuLabel, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPages, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuPages.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPanel, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuProgressBar, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRadioButton, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuRadioButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRating, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuRating.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuScrollBar, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuScrollBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSeparator, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuSeparator.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuShadowPanel, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuShadowPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuShapes, Version=5.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuShapes.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSlider, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuSlider.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSnackbar, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuSnackbar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuTextBox, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuToggleSwitch, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuToggleSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuToolTip, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuToolTip.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuTransition, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuTransition.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuUserControl, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.BunifuUserControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.Deprecated, Version=5.0.6.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.6\lib\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\DichVuDAO.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DTO\DichVu.cs" />
+    <Compile Include="DTO\HoaDon.cs" />
+    <Compile Include="DTO\KhachHang.cs" />
+    <Compile Include="fLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fLogin.Designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLinhTinh\fCustomDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLinhTinh\fCustomDialog.Designer.cs">
+      <DependentUpon>fCustomDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\ChiTietLoaiPhongDAO.cs" />
+    <Compile Include="DAO\PhongDAO.cs" />
+    <Compile Include="DTO\ChiTietLoaiPhong.cs" />
+    <Compile Include="DTO\Phong.cs" />
+    <Compile Include="DTO\PhongDangThue.cs" />
+    <Compile Include="DTO\PhongDatTruoc.cs" />
+    <Compile Include="DTO\PhongDonDep.cs" />
+    <Compile Include="DTO\PhongHetHan.cs" />
+    <Compile Include="DTO\PhongSuaChua.cs" />
+    <Compile Include="DTO\PhongTrong.cs" />
+    <Compile Include="FormLinhTinh\fBangDieuKhien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLinhTinh\fBangDieuKhien.Designer.cs">
+      <DependentUpon>fBangDieuKhien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLinhTinh\fThemKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLinhTinh\fThemKhachHang.Designer.cs">
+      <DependentUpon>fThemKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLinhTinh\fNhanPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLinhTinh\fNhanPhong.Designer.cs">
+      <DependentUpon>fNhanPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormLinhTinh\fTraPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLinhTinh\fTraPhong.Designer.cs">
+      <DependentUpon>fTraPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DichVuPhong\UC_ThongTinDV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DichVuPhong\UC_ThongTinDV.Designer.cs">
+      <DependentUpon>UC_ThongTinDV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_Dashboard.Designer.cs">
+      <DependentUpon>UC_Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_QuanLyPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_QuanLyPhong.Designer.cs">
+      <DependentUpon>UC_QuanLyPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_BaoCao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_BaoCao.Designer.cs">
+      <DependentUpon>UC_BaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_QuanKhachSan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_QuanKhachSan.Designer.cs">
+      <DependentUpon>UC_QuanKhachSan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_DSLoaiPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_DSLoaiPhong.Designer.cs">
+      <DependentUpon>UC_DSLoaiPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_LoaiPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_LoaiPhong.Designer.cs">
+      <DependentUpon>UC_LoaiPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachPhong\UC_DanhSachPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachPhong\UC_DanhSachPhong.Designer.cs">
+      <DependentUpon>UC_DanhSachPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachTang\UC_DanhSachTang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachTang\UC_DanhSachTang.Designer.cs">
+      <DependentUpon>UC_DanhSachTang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_QuanLyDonDep.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_QuanLyDonDep.Designer.cs">
+      <DependentUpon>UC_QuanLyDonDep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_Booking.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_Booking.Designer.cs">
+      <DependentUpon>UC_Booking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_DoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_DoanhThu.Designer.cs">
+      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_KhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_KhachHang.Designer.cs">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_NhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_NhanVien.Designer.cs">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Main\UC_DichVu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Main\UC_DichVu.Designer.cs">
+      <DependentUpon>UC_DichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_CheckOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_CheckOut.Designer.cs">
+      <DependentUpon>UC_CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDangThue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDangThue.Designer.cs">
+      <DependentUpon>UC_PhongDangThue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDatTruoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDatTruoc.Designer.cs">
+      <DependentUpon>UC_PhongDatTruoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDonDep.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDonDep.Designer.cs">
+      <DependentUpon>UC_PhongDonDep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongHetHan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongHetHan.Designer.cs">
+      <DependentUpon>UC_PhongHetHan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongSuaChua.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongSuaChua.Designer.cs">
+      <DependentUpon>UC_PhongSuaChua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongTrong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_PhongTrong.Designer.cs">
+      <DependentUpon>UC_PhongTrong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_SoDo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_SoDo.Designer.cs">
+      <DependentUpon>UC_SoDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_Tang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_SoDoPhong\UC_Tang.Designer.cs">
+      <DependentUpon>UC_Tang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_PhongDangThue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLPhong\UC_PhongDangThue.Designer.cs">
+      <DependentUpon>UC_PhongDangThue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_ChiTiet\UC_DatTrung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_ChiTiet\UC_DatTrung.Designer.cs">
+      <DependentUpon>UC_DatTrung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_ChiTiet\UC_TienNghi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_ChiTiet\UC_TienNghi.Designer.cs">
+      <DependentUpon>UC_TienNghi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLinhTinh\UC_NhanPhong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormLinhTinh\UC_NhanPhong.Designer.cs">
+      <DependentUpon>UC_NhanPhong.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLinhTinh\fCustomDialog.resx">
+      <DependentUpon>fCustomDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLinhTinh\fThemKhachHang.resx">
+      <DependentUpon>fThemKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLinhTinh\fBangDieuKhien.resx">
+      <DependentUpon>fBangDieuKhien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLinhTinh\fNhanPhong.resx">
+      <DependentUpon>fNhanPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLinhTinh\fTraPhong.resx">
+      <DependentUpon>fTraPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DichVuPhong\UC_ThongTinDV.resx">
+      <DependentUpon>UC_ThongTinDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_Dashboard.resx">
+      <DependentUpon>UC_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_QuanLyPhong.resx">
+      <DependentUpon>UC_QuanLyPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_BaoCao.resx">
+      <DependentUpon>UC_BaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_QuanKhachSan.resx">
+      <DependentUpon>UC_QuanKhachSan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_DSLoaiPhong.resx">
+      <DependentUpon>UC_DSLoaiPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_LoaiPhong.resx">
+      <DependentUpon>UC_LoaiPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLKhachSan\DanhSachPhong\UC_DanhSachPhong.resx">
+      <DependentUpon>UC_DanhSachPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLKhachSan\DanhSachTang\UC_DanhSachTang.resx">
+      <DependentUpon>UC_DanhSachTang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_QuanLyDonDep.resx">
+      <DependentUpon>UC_QuanLyDonDep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_Booking.resx">
+      <DependentUpon>UC_Booking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_DichVu.resx">
+      <DependentUpon>UC_DichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_DoanhThu.resx">
+      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_KhachHang.resx">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Main\UC_NhanVien.resx">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_CheckOut.resx">
+      <DependentUpon>UC_CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDangThue.resx">
+      <DependentUpon>UC_PhongDangThue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDatTruoc.resx">
+      <DependentUpon>UC_PhongDatTruoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_PhongDonDep.resx">
+      <DependentUpon>UC_PhongDonDep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_PhongHetHan.resx">
+      <DependentUpon>UC_PhongHetHan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_PhongSuaChua.resx">
+      <DependentUpon>UC_PhongSuaChua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_PhongTrong.resx">
+      <DependentUpon>UC_PhongTrong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_SoDo.resx">
+      <DependentUpon>UC_SoDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_SoDoPhong\UC_Tang.resx">
+      <DependentUpon>UC_Tang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLPhong\UC_PhongDangThue.resx">
+      <DependentUpon>UC_PhongDangThue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_ChiTiet\UC_DatTrung.resx">
+      <DependentUpon>UC_DatTrung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QLKhachSan\DanhSachLoaiPhong\UC_ChiTiet\UC_TienNghi.resx">
+      <DependentUpon>UC_TienNghi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLinhTinh\UC_NhanPhong.resx">
+      <DependentUpon>UC_NhanPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sawunn GIF - Sawunn - Discover &amp; Share GIFs.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\m2i8H7G6i8K9m2m2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bedroom-sleeping-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel_3009710.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-staff-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bar-chart_5567326.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pie-chart-report-script-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-customer-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-log-out-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-services-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-hotel-room-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-hotel-room-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rating.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rooms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rooms %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profit-growth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consultant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consultant %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\service %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-out %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tải xuống.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\booking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotel %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\booking-online.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-out %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\status-quo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2024-07-29 211213.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2024-07-29 211213 - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HOTEL D8 %282%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diagram %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1634806992_phong-ngu-khach-san-4-min.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saving.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\financial-service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money-back-guarantee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-estimate-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HinhAnhPhong\single_room.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HinhAnhPhong\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HinhAnhPhong\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HinhAnhPhong\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HinhAnhPhong\double_room.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HinhAnhPhong\vip_room.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HOTEL D8 %283%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HOTEL D8 %284%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HOTEL D8 %285%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HOTEL D8 %286%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maintenance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expired.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\available %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-room-icon-design-core-entertainment-icon-travel-travel-picture-painted-cartoon-5a6e5dad1d2185.4902799215171823811193.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data-recovery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\room-service %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\serverces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloche.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\room-service %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asdasd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guests.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HinhAnhDichVu\banhmi.jpg" />
+    <Content Include="HinhAnhDichVu\banhxeo.jpg" />
+    <Content Include="HinhAnhDichVu\bunbohue.jpg" />
+    <Content Include="HinhAnhDichVu\bundaumamtom.jpg" />
+    <Content Include="HinhAnhDichVu\cafe.jpg" />
+    <Content Include="HinhAnhDichVu\cafesua.jpg" />
+    <Content Include="HinhAnhDichVu\chanhday.jpg" />
+    <Content Include="HinhAnhDichVu\coca.jpg" />
+    <Content Include="HinhAnhDichVu\comtam.jpg" />
+    <Content Include="HinhAnhDichVu\garan.jpg" />
+    <Content Include="HinhAnhDichVu\giatlaquanao.jpg" />
+    <Content Include="HinhAnhDichVu\miquang.jpg" />
+    <Content Include="HinhAnhDichVu\pepsi.jpg" />
+    <Content Include="HinhAnhDichVu\pho.jpg" />
+    <Content Include="HinhAnhDichVu\pizza.jpg" />
+    <Content Include="HinhAnhDichVu\salad.jpg" />
+    <Content Include="HinhAnhDichVu\sinhtobo.jpg" />
+    <Content Include="HinhAnhDichVu\spaghetti.jpg" />
+    <Content Include="HinhAnhDichVu\sting.jpg" />
+    <Content Include="HinhAnhDichVu\sushi.jpg" />
+    <Content Include="HinhAnhDichVu\trasua.jpg" />
+    <Content Include="HinhAnhDichVu\vesinhphong.jpg" />
+    <None Include="Resources\icons8-delete-100.png" />
+    <None Include="Resources\icons8-edit-text-file-100.png" />
+    <None Include="Resources\icons8-add-100.png" />
+    <None Include="Resources\tiles.png" />
+    <None Include="Resources\bedroom.png" />
+    <None Include="Resources\beds.png" />
+    <None Include="Resources\hoteld82.png" />
+    <None Include="Resources\hoteld81.png" />
+    <None Include="Resources\hoteld8.png" />
+    <None Include="Resources\9c838839fcf2197a8d8007b27ba713a3.gif" />
+    <None Include="Resources\welcome-greeting-1y2timm763pcwtl2.gif" />
+    <None Include="Resources\anh-dong-welcome-de-thuong_075925577.gif" />
+    <None Include="Resources\Screenshot 2024-08-11 222919.png" />
+    <None Include="Resources\padlock.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\password.png" />
+    <None Include="Resources\1802982.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QLKS_BUS\QLKS_BUS.csproj">
+      <Project>{A7FD4877-F033-431E-8C1F-EA34B72FF1AA}</Project>
+      <Name>QLKS_BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QLKS_DAL\QLKS_DAL.csproj">
+      <Project>{520D96D4-B53C-4EE8-B0DB-00711F879A8C}</Project>
+      <Name>QLKS_DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

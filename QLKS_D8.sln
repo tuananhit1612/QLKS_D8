@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLKS_DAL", "QLKS_DAL\QLKS_DAL.csproj", "{520D96D4-B53C-4EE8-B0DB-00711F879A8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLKS_BUS", "QLKS_BUS\QLKS_BUS.csproj", "{A7FD4877-F033-431E-8C1F-EA34B72FF1AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLKS_GUI", "QLKS\QLKS_GUI.csproj", "{AE7DF128-E71E-4906-9BC0-811E625CC864}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{520D96D4-B53C-4EE8-B0DB-00711F879A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520D96D4-B53C-4EE8-B0DB-00711F879A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520D96D4-B53C-4EE8-B0DB-00711F879A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520D96D4-B53C-4EE8-B0DB-00711F879A8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7FD4877-F033-431E-8C1F-EA34B72FF1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FD4877-F033-431E-8C1F-EA34B72FF1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FD4877-F033-431E-8C1F-EA34B72FF1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FD4877-F033-431E-8C1F-EA34B72FF1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE7DF128-E71E-4906-9BC0-811E625CC864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7DF128-E71E-4906-9BC0-811E625CC864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7DF128-E71E-4906-9BC0-811E625CC864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7DF128-E71E-4906-9BC0-811E625CC864}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EA0CB8F-0EFE-4E9C-8D48-7DE5E5D4C9D3}
+	EndGlobalSection
+EndGlobal
