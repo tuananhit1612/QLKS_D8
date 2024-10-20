@@ -11,5 +11,7 @@ namespace QLKS_BUS.ViewModels
         public string maPhong { get; set; }
         public string tang { get; set; }
         public string  tenLoaiPhong { get; set; }
+
+        public string tinhTrang { get; set; }
     }
 }

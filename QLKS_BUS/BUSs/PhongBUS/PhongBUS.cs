@@ -79,7 +79,11 @@ namespace QLKS_BUS.BUSs.PhongBUS
 
         public List<PhongViewModel> GetAllPhongByTang(string soTang)
         {
-             
+            return phong.Where(x=>x.MaTang.ToString() == soTang).Select(p => new PhongViewModel()
+            {
+                maPhong = p.MaPhong.ToString(),
+                tinhTrang = p.TinhTrang,
+            }).ToList();
         }
     }
 }
