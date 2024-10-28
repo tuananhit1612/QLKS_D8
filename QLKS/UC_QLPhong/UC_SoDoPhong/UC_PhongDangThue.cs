@@ -1,6 +1,9 @@
 ﻿using QLKS.DAO;
 using QLKS.DTO;
 using QLKS.FormQuanLy;
+
+using QLKS_BUS.BUSs.PhongDangThueBUS;
+using QLKS_DAL.DALs.PhieuPhongDangThueDAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,45 +18,25 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
 {
     public partial class UC_PhongDangThue : UserControl
     {
+        PhongDangThueBUS phongDangThueBUS;
         public string maPhong { get; set; }
-        public int maLoaiPhong { get; set; }
-        public string cCCD { get; set; }
-        public string tenKhachHang { get; set; }
-        public string tenLoaiPhong { get; set; }
-        public decimal giaPhong { get; set; }
-        public DateTime ngayBatDau { get; set; }
-        public DateTime ngayKetThuc { get; set; }
-        private decimal traTruoc { get; set; }
-        private string ghiChu { get; set; }
+
         public UC_PhongDangThue(string MaPhong)
         {
             InitializeComponent();
-            maPhong = MaPhong;
+            this.maPhong = MaPhong;
+            phongDangThueBUS = new PhongDangThueBUS();
             ThemThongTin();
         }
         void ThemThongTin()
         {
-            //List<PhongDangThue> data = PhongDAO.Instance.GetPhongDangThue(maPhong);
-            //if (data.Count > 0)
-            //{
-            //    lblMaPhong.Text = data[0].MaPhong.ToString();
-
-            //    lblNgayBatDau.Text = data[0].NgayBatDau.ToString("dd/MM/yyyy");
-            //    lblNgayKetThuc.Text = data[0].NgayKetThuc.ToString("dd/MM/yyyy");
-            //    lblTenKhachHang.Text = data[0].TenKhachHang.ToString();
-            //    lblTinhTrang.Text = data[0].TinhTrang.ToString();
-                
-            //    lblTenLoaiPhong.Text = data[0].TenLoaiPhong.ToString();
-            //    maLoaiPhong = data[0].MaLoaiPhong;
-            //    cCCD = data[0].CCCD;
-            //    traTruoc = data[0].TraTruoc;
-            //    ghiChu = data[0].GhiChu;
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Không có dữ liệu cho phòng này.");
-            //}
+                var data = phongDangThueBUS.GetPhongDangThueByMaPhong(maPhong);
+                lblMaPhong.Text = data.maPhong.ToString();
+                lblNgayBatDau.Text = data.ngayBatDau.Value.ToString();
+                lblNgayKetThuc.Text = data.ngayDuKienKetThuc.Value.ToString();
+                lblTenKhachHang.Text = data.tenKH.ToString();
+                lblTinhTrang.Text = data.tinhTrang.ToString();
+                lblTenLoaiPhong.Text = data.tenLoaiPhong.ToString();
         }
 
         private void lblMaPhong_Click(object sender, EventArgs e)

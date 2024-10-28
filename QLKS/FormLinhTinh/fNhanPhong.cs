@@ -1,6 +1,11 @@
 ﻿using QLKS.DAO;
 using QLKS.DTO;
 using QLKS.FormLinhTinh;
+using QLKS_BUS.BUSs.KhachHangBUS;
+using QLKS_BUS.BUSs.PhongBUS;
+using QLKS_BUS.BUSs.PhongDangThueBUS;
+using QLKS_BUS.ViewModels;
+using QLKS_DAL.DALs.PhieuPhongDangThueDAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,26 +21,28 @@ namespace QLKS
     public partial class fNhanPhong : Form
     {
         DataTable dataTable;
-        private int maPhong;
-        private string tenLoaiPhong;
-        private decimal giaPhong;
-        private int maLoaiPhong;
-        private string cccd;
-        public fNhanPhong(int maPhong,string tenLoaiPhong , decimal giaPhong , int maLoaiPhong)
+        private string maPhong;
+        PhongBUS phongBUS;
+        KhachHangBUS khachHangBUS;
+        PhongViewModel dataPhong;
+        PhongDangThueBUS phongDangThueBUS;
+        public fNhanPhong(string maPhong)
         {
             InitializeComponent();
             this.maPhong = maPhong;
-            this.tenLoaiPhong = tenLoaiPhong;
-            this.giaPhong = giaPhong;
-            this.maLoaiPhong = maLoaiPhong;
+            phongBUS = new PhongBUS();
+            khachHangBUS = new KhachHangBUS();
+            phongDangThueBUS = new PhongDangThueBUS();
+            dataPhong = phongBUS.GetPhongByMaPhong(maPhong);
         }
 
 
         private void NhanPhong_Load(object sender, EventArgs e)
         {
-            lblMaPhong.Text = maPhong.ToString() ;
-            txtLoaiPhong.Text = tenLoaiPhong.ToString() ;
-            txtGiaPhong.Text = giaPhong.ToString() ;
+            lblMaPhong.Text = maPhong.ToString();
+
+            txtLoaiPhong.Text = dataPhong.tenLoaiPhong.ToString() ;
+            txtGiaPhong.Text = dataPhong.giaPhong.ToString();
             txtNgayHienTai.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtGioHienTai.Text = DateTime.Now.ToString("HH:mm");
 
@@ -123,7 +130,7 @@ namespace QLKS
 
         private void btnThem_Click_1(object sender, EventArgs e)
         {
-            cccd = txtCCCD.Text;
+            string cccd = txtCCCD.Text;
             string TenKH = txtTenKhachHang.Text;
             DateTime NgaySinh;
             string DiaChi = txtDiaChi.Text;
@@ -138,18 +145,17 @@ namespace QLKS
             
             
         }
-
         private void btnTimKiem_Click_1(object sender, EventArgs e)
         {
-            List<KhachHang> data = KhachHangDAO.Instance.CheckKhachHang(txtCCCD.Text);
-            if (data.Count > 0)
+            var data = khachHangBUS.getKhachHangByCCCD(txtCCCD.Text);
+            if (data != null)
             {
                 btnThem.Enabled = true;
-                txtDiaChi.Text = data[0].DiaChi;
-                txtEmail.Text = data[0].Email;
-                txtNgaySinh.Text = data[0].NgaySinh.Date.ToString("dd/MM/yyyy");
-                txtSDT.Text = data[0].SoDienThoai;
-                txtTenKhachHang.Text = data[0].TenKhachHang;
+                txtDiaChi.Text = data.diaChi;
+                txtEmail.Text = data.email;
+                txtNgaySinh.Text = data.ngaySinh.Date.ToString("dd/MM/yyyy");
+                txtSDT.Text = data.SDT;
+                txtTenKhachHang.Text = data.tenKH;
 
             }
             else
@@ -211,7 +217,7 @@ namespace QLKS
             }
             if (dataTable.Rows.Count > 0)
             {
-                
+
                 int tratuoc = int.Parse(txtTraTruoc.Text);
                 string ghichu = txtGhiChu.Text;
                 DateTime NgayBatDau, NgayKetThuc;
@@ -228,29 +234,22 @@ namespace QLKS
                 }
                 NgayBatDau = NgayBatDau.Date;
                 NgayKetThuc = NgayKetThuc.Date;
-                int check_CapNhatPhong = DataProvider.Instance.ExecuteNonQuery("EXEC CapNhatTinhTrangPhong @maPhong , @tinhTrang", new object[] { maPhong, "Đang Thuê" });
-                if (check_CapNhatPhong > 0)
+                try
                 {
-                    foreach (DataRow row in dataTable.Rows)
-                    {
-                        int check_NhanPhong = DataProvider.Instance.ExecuteNonQuery("EXEC AddPhongDangThue @MaPhong , @MaLoaiPhong , @CCCD , @TraTruoc , @NgayBatDau , @NgayKetThuc , @GhiChu", new object[] { maPhong, maLoaiPhong, row["CCCD"], tratuoc, NgayBatDau, NgayKetThuc, ghichu });
-                        if (check_NhanPhong > 0)
-                        {
-                            MessageBox.Show("Nhận Phòng Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nhận Phòng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
 
+                    PhongViewModel phongUpdate = new PhongViewModel() { maPhong = maPhong , tinhTrang = "Đang Thuê",maLoaiPhong = dataPhong.maLoaiPhong,tang=dataPhong.tang};
+                    phongBUS.InserOrUpdatePhongBUS(phongUpdate);
+                    MessageBox.Show("Debug : Thanh Cong (1)");
+                    PhieuThuePhongViewModel phieuThuePhong = new PhieuThuePhongViewModel() { MaPhong = Int32.Parse(dataPhong.maPhong), MaLoaiPhong = Int32.Parse(dataPhong.maLoaiPhong), TraTruoc = tratuoc, NgayThuePhong = NgayBatDau, NgayDuKienTraPhong = NgayKetThuc, GhiChu = txtGhiChu.Text, TinhTrang = "Đã Nhận Phòng", MaNhanVien = 1, CCCD = dataTable.Rows[0]["CCCD"].ToString()};
+                    phongDangThueBUS.InsertOrUpdatePhongThueBUS(phieuThuePhong);
+                    MessageBox.Show("Debug : Thanh Cong (2)");
 
                 }
-                else
+                catch (Exception ex) 
                 {
-                    MessageBox.Show("Nhận Phòng thất bại , vui lòng kiểm tra lại thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Quá Trình nhận phòng bị lỗi: " + ex,"Thông Báo",MessageBoxButtons.OK, MessageBoxIcon.Error);   
                 }
+                
             }
 
         }

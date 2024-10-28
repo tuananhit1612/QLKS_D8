@@ -1,5 +1,8 @@
 ﻿using QLKS.DAO;
 using QLKS.DTO;
+using QLKS_BUS.BUSs.PhongBUS;
+using QLKS_BUS.BUSs.PhongDonDepBUS;
+using QLKS_DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,30 +17,23 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
 {
     public partial class UC_PhongDonDep : UserControl
     {
-        public string MaPhong { get; set; }
-        public UC_PhongDonDep(string maPhong)
+        PhongDonDepBUS _phongDonDepBUS;
+        private string maPhong { get; set; }
+        public UC_PhongDonDep(string MaPhong)
         {
             InitializeComponent();
-            MaPhong = maPhong;
+            this.maPhong = MaPhong;
+            _phongDonDepBUS = new PhongDonDepBUS();
             AddThongTin();
         }
         void AddThongTin()
         {
-            //List<PhongDonDep> data = PhongDAO.Instance.GetPhongDonDep(MaPhong);
-            //if (data.Count > 0)
-            //{
-            //    lblMaPhong.Text = data[0].MaPhong.ToString();
-            //    lblTenLoaiPhong.Text = data[0].TenLoaiPhong.ToString();
-            //    lblTinhTrang.Text = data[0].TinhTrang.ToString();
-            //    //lblGhiChu.Text = data[0].GhiChu.ToString();
-            //    //lblNgayDonDep.Text = data[0].NgayDonDep.ToString();
-            //    lblThoiGiamBatDau.Text = data[0].ThoiGianBatDau.ToString();
-            //    lblThoiGianKetThuc.Text = data[0].ThoiGianKetThuc.ToString();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Không có dữ liệu cho phòng này.");
-            //}
+            var phong = _phongDonDepBUS.GetPhongDonDepByMaPhong(maPhong);
+            lblTenLoaiPhong.Text = phong.tenLoaiPhong;
+            lblMaPhong.Text = phong.maPhong;
+            lblTinhTrang.Text = phong.tinhTrang;
+            lblThoiGiamBatDau.Text = phong.ngayGioDonDep?.ToString("dd/MM/yy") ?? "01/01/2000";
+            lblThoiGianKetThuc.Text = phong.ngayGioDonDep?.ToString("dd/MM/yy") ?? "01/01/2000";
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using QLKS.DAO;
+using QLKS_BUS.BUSs.KhachHangBUS;
+using QLKS_BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,20 +17,22 @@ namespace QLKS.FormLinhTinh
     public partial class fThemKhachHang : Form
     {
         public string CCCD;
+        KhachHangBUS khachHangBUS;
         public fThemKhachHang(string cCCD)
         {
             InitializeComponent();
             this.CCCD= cCCD;
             txtCCCD.Text = cCCD;
+            khachHangBUS = new KhachHangBUS();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string TenKH = txtTenKhachHang.Text;
+           
             DateTime NgaySinh;
             string DiaChi = txtDiaChi.Text;
-            string SDT = txtSDT.Text;
-            string email = txtEmail.Text;
+            string sDT = txtSDT.Text;
+            string Email = txtEmail.Text;
             try
             {
                 
@@ -40,16 +44,17 @@ namespace QLKS.FormLinhTinh
                 return;
             }
             NgaySinh = NgaySinh.Date;
-            int ans = DataProvider.Instance.ExecuteNonQuery("EXEC AddKhachHang @TenKhachHang , @CCCD , @NgaySinh , @DiaChi , @SoDienThoai , @Email",new object[] {TenKH,CCCD,NgaySinh,DiaChi,SDT,email});
-            if(ans > 0)
+            try
             {
-                MessageBox.Show("Thêm Khách Hàng Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                KhachHangViewModel kh = new KhachHangViewModel() { cccd = txtCCCD.Text, tenKH = txtTenKhachHang.Text, ngaySinh = NgaySinh, diaChi = DiaChi, email = Email, SDT = txtSDT.Text };
+                khachHangBUS.InsertUpdateKhachHang(kh);
+                MessageBox.Show("Thêm khách hàng mới thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.Yes;
                 this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thêm Khách Hàng Thất Bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thêm khách hàng mới thất bại +\n" + ex,"Thông Báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

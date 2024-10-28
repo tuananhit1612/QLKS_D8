@@ -11,5 +11,6 @@ namespace QLKS_DAL.DALs.PhongDAL
     public interface IPhongDAL
     {
         List<PHONG> GetListPhong();
+        void InserOrUpdatePhongDAL(PHONG p);
     }
 }

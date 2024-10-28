@@ -7,16 +7,16 @@ namespace QLKS_DAL.Entities
 {
     public partial class QLKS_DBContext : DbContext
     {
-        private static QLKS_DBContext instance;
         public QLKS_DBContext()
             : base("name=QLKS_DBContext")
         {
         }
+        private static QLKS_DBContext instance;
         public static QLKS_DBContext Instance
         {
             get
             {
-                if(instance == null) instance = new QLKS_DBContext();
+                if (instance == null) instance = new QLKS_DBContext();
                 return instance;
             }
         }

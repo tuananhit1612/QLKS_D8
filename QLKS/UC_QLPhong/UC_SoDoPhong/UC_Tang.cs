@@ -1,6 +1,7 @@
 ﻿using QLKS.DAO;
 using QLKS.DTO;
 using QLKS_BUS.BUSs.PhongBUS;
+using QLKS_DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,19 +16,20 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
 {
     public partial class UC_Tang : UserControl
     {
-        public string SoTang { get; set; }
+        public string trangthai { get; set; }
+        public string loaiPhong { get; set; }
+        public string soTang { get; set; }
         PhongBUS _phongBUS;
         
-        public UC_Tang()
+        public UC_Tang(string soTang,string loaiPhong)
         {
             InitializeComponent();
             _phongBUS = new PhongBUS();
-            //AllRooms(SoTang);
+            this.soTang = soTang;
+            this.loaiPhong= loaiPhong;
+            lblTang.Text = soTang;
         }
-        public void ThemSoTang()
-        {
-            lblTang.Text = SoTang;
-        }
+        
         private void ThemPhongTrong(string MaPhong) 
         {
             UC_PhongTrong uc = new UC_PhongTrong(MaPhong);
@@ -68,18 +70,105 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
         {
             
         }
-
-        private void UC_Tang_Load(object sender, EventArgs e)
+        public void XuLyPhongDangThue()
         {
-            var listPhongInTang = _phongBUS.GetAllPhongByTang(lblTang.Text);
-            foreach(var phong in listPhongInTang)
+            
+            flowLayoutPanel1.Controls.Clear();
+            var data = _phongBUS.GetAllPhongByTangLoaiPhong(soTang, loaiPhong);
+
+            foreach (var phong in data)
+            {
+               //MessageBox.Show(phong.tinhTrang);
+
+                if (phong.tinhTrang == "Đang Thuê")
+                {
+                    ThemPhongDangThue(phong.maPhong);
+                }
+            }
+
+        }
+        public void XuLyPhongHetHan(string SoTang)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var data = _phongBUS.GetAllPhongByTangLoaiPhong(soTang, loaiPhong);
+
+            foreach (var phong in data)
+            {
+                if (phong.tinhTrang == "Hết Hạn")
+                {
+                    ThemPhongHetHan(phong.maPhong);
+                }
+            }
+
+        }
+
+        public void XuLyPhongDonDep(string SoTang)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var data = _phongBUS.GetAllPhongByTangLoaiPhong(soTang, loaiPhong);
+
+            foreach (var phong in data)
+            {
+                if (phong.tinhTrang == "Đang dọn dẹp")
+                {
+                    ThemDangDonDep(phong.maPhong);
+                }
+            }
+
+        }
+        public void XuLyPhongTrong(string SoTang)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var data = _phongBUS.GetAllPhongByTangLoaiPhong(SoTang, loaiPhong);
+            
+            foreach (var phong in data)
+            {
+                if (phong.tinhTrang == "Trống")
+                {
+                    ThemPhongTrong(phong.maPhong);
+                }
+            }
+
+        }
+        public void XuLyPhongSuaChua(string SoTang)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var data = _phongBUS.GetAllPhongByTangLoaiPhong(soTang, loaiPhong);
+
+            foreach (var phong in data)
+            {
+                if (phong.tinhTrang == "Đang bảo trì")
+                {
+                    ThemDangSuaChua(phong.maPhong);
+                }
+            }
+
+        }
+        public void XuLyPhongDatTruoc(string SoTang)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var data = _phongBUS.GetAllPhongByTangLoaiPhong(soTang, loaiPhong);
+
+            foreach (var phong in data)
+            {
+                if (phong.tinhTrang == "Đã đặt trước")
+                {
+                    ThemPhongDatTruoc(phong.maPhong);
+                }
+            }
+
+        }
+        public void XuLyTatCaPhongByTang(string soTang)
+        {
+            var listPhongInTang = _phongBUS.GetAllPhongByTangLoaiPhong(soTang,loaiPhong);
+            foreach (var phong in listPhongInTang)
             {
                 switch (phong.tinhTrang)
                 {
                     case "Trống":
                         ThemPhongTrong(phong.maPhong);
                         break;
-                    case "Đang sửa chữa":
+                    case "Đang bảo trì":
                         ThemDangSuaChua(phong.maPhong);
                         break;
                     case "Đang dọn dẹp":
@@ -96,6 +185,10 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
                         break;
                 }
             }
+        }
+        private void UC_Tang_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -31,8 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblMaPhong = new System.Windows.Forms.Label();
-            this.lblNgayKetThuc = new System.Windows.Forms.Label();
             this.lblNgayBatDau = new System.Windows.Forms.Label();
+            this.lblLoai = new System.Windows.Forms.Label();
             this.lblTenKhachHang = new System.Windows.Forms.Label();
             this.lblTinhTrang = new System.Windows.Forms.Label();
             this.lblTenLoaiPhong = new System.Windows.Forms.Label();
@@ -44,8 +44,8 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblMaPhong);
-            this.panel1.Controls.Add(this.lblNgayKetThuc);
             this.panel1.Controls.Add(this.lblNgayBatDau);
+            this.panel1.Controls.Add(this.lblLoai);
             this.panel1.Controls.Add(this.lblTenKhachHang);
             this.panel1.Controls.Add(this.lblTinhTrang);
             this.panel1.Controls.Add(this.lblTenLoaiPhong);
@@ -78,34 +78,34 @@
             this.lblMaPhong.TabIndex = 19;
             this.lblMaPhong.Text = "101";
             // 
-            // lblNgayKetThuc
-            // 
-            this.lblNgayKetThuc.AutoSize = true;
-            this.lblNgayKetThuc.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgayKetThuc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblNgayKetThuc.Location = new System.Drawing.Point(45, 187);
-            this.lblNgayKetThuc.Name = "lblNgayKetThuc";
-            this.lblNgayKetThuc.Size = new System.Drawing.Size(53, 23);
-            this.lblNgayKetThuc.TabIndex = 13;
-            this.lblNgayKetThuc.Text = "label1";
-            // 
             // lblNgayBatDau
             // 
             this.lblNgayBatDau.AutoSize = true;
             this.lblNgayBatDau.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayBatDau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblNgayBatDau.Location = new System.Drawing.Point(45, 159);
+            this.lblNgayBatDau.Location = new System.Drawing.Point(23, 184);
             this.lblNgayBatDau.Name = "lblNgayBatDau";
             this.lblNgayBatDau.Size = new System.Drawing.Size(53, 23);
             this.lblNgayBatDau.TabIndex = 14;
             this.lblNgayBatDau.Text = "label1";
+            // 
+            // lblLoai
+            // 
+            this.lblLoai.AutoSize = true;
+            this.lblLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblLoai.Location = new System.Drawing.Point(127, 132);
+            this.lblLoai.Name = "lblLoai";
+            this.lblLoai.Size = new System.Drawing.Size(63, 28);
+            this.lblLoai.TabIndex = 15;
+            this.lblLoai.Text = "label1";
             // 
             // lblTenKhachHang
             // 
             this.lblTenKhachHang.AutoSize = true;
             this.lblTenKhachHang.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenKhachHang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblTenKhachHang.Location = new System.Drawing.Point(135, 126);
+            this.lblTenKhachHang.Location = new System.Drawing.Point(127, 104);
             this.lblTenKhachHang.Name = "lblTenKhachHang";
             this.lblTenKhachHang.Size = new System.Drawing.Size(63, 28);
             this.lblTenKhachHang.TabIndex = 15;
@@ -116,7 +116,7 @@
             this.lblTinhTrang.AutoSize = true;
             this.lblTinhTrang.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTinhTrang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblTinhTrang.Location = new System.Drawing.Point(135, 85);
+            this.lblTinhTrang.Location = new System.Drawing.Point(127, 76);
             this.lblTinhTrang.Name = "lblTinhTrang";
             this.lblTinhTrang.Size = new System.Drawing.Size(63, 28);
             this.lblTinhTrang.TabIndex = 16;
@@ -127,7 +127,7 @@
             this.lblTenLoaiPhong.AutoSize = true;
             this.lblTenLoaiPhong.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenLoaiPhong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblTenLoaiPhong.Location = new System.Drawing.Point(135, 57);
+            this.lblTenLoaiPhong.Location = new System.Drawing.Point(127, 48);
             this.lblTenLoaiPhong.Name = "lblTenLoaiPhong";
             this.lblTenLoaiPhong.Size = new System.Drawing.Size(63, 28);
             this.lblTenLoaiPhong.TabIndex = 17;
@@ -154,10 +154,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblMaPhong;
-        private System.Windows.Forms.Label lblNgayKetThuc;
         private System.Windows.Forms.Label lblNgayBatDau;
         private System.Windows.Forms.Label lblTenKhachHang;
         private System.Windows.Forms.Label lblTinhTrang;
         private System.Windows.Forms.Label lblTenLoaiPhong;
+        private System.Windows.Forms.Label lblLoai;
     }
 }

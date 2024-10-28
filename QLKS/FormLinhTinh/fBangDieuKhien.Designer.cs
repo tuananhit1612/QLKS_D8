@@ -88,11 +88,11 @@
             // 
             this.lblMaPhong.AutoSize = true;
             this.lblMaPhong.BackColor = System.Drawing.Color.White;
-            this.lblMaPhong.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaPhong.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaPhong.ForeColor = System.Drawing.Color.Blue;
-            this.lblMaPhong.Location = new System.Drawing.Point(784, 21);
+            this.lblMaPhong.Location = new System.Drawing.Point(786, 21);
             this.lblMaPhong.Name = "lblMaPhong";
-            this.lblMaPhong.Size = new System.Drawing.Size(64, 41);
+            this.lblMaPhong.Size = new System.Drawing.Size(85, 50);
             this.lblMaPhong.TabIndex = 17;
             this.lblMaPhong.Text = "102";
             // 
@@ -135,7 +135,7 @@
             this.lblDonDep.BackColor = System.Drawing.Color.White;
             this.lblDonDep.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDonDep.ForeColor = System.Drawing.Color.Green;
-            this.lblDonDep.Location = new System.Drawing.Point(905, 271);
+            this.lblDonDep.Location = new System.Drawing.Point(911, 285);
             this.lblDonDep.Name = "lblDonDep";
             this.lblDonDep.Size = new System.Drawing.Size(107, 31);
             this.lblDonDep.TabIndex = 14;
@@ -146,11 +146,11 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 148);
+            this.label3.Location = new System.Drawing.Point(18, 162);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(397, 38);
+            this.label3.Size = new System.Drawing.Size(411, 38);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Chọn Trạng Thái Cần Cập Nhật";
+            this.label3.Text = "Chọn Trạng Thái Cần Cập Nhật: ";
             // 
             // btnDonDep
             // 
@@ -172,7 +172,7 @@
             this.btnDonDep.ImageSize = new System.Drawing.Size(59, 60);
             this.btnDonDep.ImageZoomSize = new System.Drawing.Size(69, 70);
             this.btnDonDep.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnDonDep.InitialImage")));
-            this.btnDonDep.Location = new System.Drawing.Point(925, 198);
+            this.btnDonDep.Location = new System.Drawing.Point(931, 212);
             this.btnDonDep.Name = "btnDonDep";
             this.btnDonDep.Rotation = 0;
             this.btnDonDep.ShowActiveImage = true;
@@ -185,16 +185,17 @@
             this.btnDonDep.WaitOnLoad = false;
             this.btnDonDep.Zoom = 10;
             this.btnDonDep.ZoomSpeed = 10;
+            this.btnDonDep.Click += new System.EventHandler(this.btnDonDep_Click);
             // 
             // lblTrangThai
             // 
             this.lblTrangThai.AutoSize = true;
             this.lblTrangThai.BackColor = System.Drawing.Color.White;
-            this.lblTrangThai.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrangThai.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrangThai.ForeColor = System.Drawing.Color.Blue;
-            this.lblTrangThai.Location = new System.Drawing.Point(308, 110);
+            this.lblTrangThai.Location = new System.Drawing.Point(305, 110);
             this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(88, 38);
+            this.lblTrangThai.Size = new System.Drawing.Size(94, 41);
             this.lblTrangThai.TabIndex = 4;
             this.lblTrangThai.Text = "Trống";
             // 
@@ -204,7 +205,7 @@
             this.lblSuaChua.BackColor = System.Drawing.Color.White;
             this.lblSuaChua.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSuaChua.ForeColor = System.Drawing.Color.Green;
-            this.lblSuaChua.Location = new System.Drawing.Point(753, 271);
+            this.lblSuaChua.Location = new System.Drawing.Point(759, 285);
             this.lblSuaChua.Name = "lblSuaChua";
             this.lblSuaChua.Size = new System.Drawing.Size(112, 31);
             this.lblSuaChua.TabIndex = 12;
@@ -230,7 +231,7 @@
             this.btnTrong.ImageSize = new System.Drawing.Size(59, 60);
             this.btnTrong.ImageZoomSize = new System.Drawing.Size(69, 70);
             this.btnTrong.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnTrong.InitialImage")));
-            this.btnTrong.Location = new System.Drawing.Point(110, 198);
+            this.btnTrong.Location = new System.Drawing.Point(116, 212);
             this.btnTrong.Name = "btnTrong";
             this.btnTrong.Rotation = 0;
             this.btnTrong.ShowActiveImage = true;
@@ -243,6 +244,7 @@
             this.btnTrong.WaitOnLoad = false;
             this.btnTrong.Zoom = 10;
             this.btnTrong.ZoomSpeed = 10;
+            this.btnTrong.Click += new System.EventHandler(this.btnTrong_Click);
             // 
             // btnSuaChua
             // 
@@ -264,7 +266,7 @@
             this.btnSuaChua.ImageSize = new System.Drawing.Size(59, 60);
             this.btnSuaChua.ImageZoomSize = new System.Drawing.Size(69, 70);
             this.btnSuaChua.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSuaChua.InitialImage")));
-            this.btnSuaChua.Location = new System.Drawing.Point(773, 198);
+            this.btnSuaChua.Location = new System.Drawing.Point(779, 212);
             this.btnSuaChua.Name = "btnSuaChua";
             this.btnSuaChua.Rotation = 0;
             this.btnSuaChua.ShowActiveImage = true;
@@ -277,6 +279,7 @@
             this.btnSuaChua.WaitOnLoad = false;
             this.btnSuaChua.Zoom = 10;
             this.btnSuaChua.ZoomSpeed = 10;
+            this.btnSuaChua.Click += new System.EventHandler(this.btnSuaChua_Click);
             // 
             // btnDatTruoc
             // 
@@ -298,7 +301,7 @@
             this.btnDatTruoc.ImageSize = new System.Drawing.Size(59, 60);
             this.btnDatTruoc.ImageZoomSize = new System.Drawing.Size(69, 70);
             this.btnDatTruoc.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnDatTruoc.InitialImage")));
-            this.btnDatTruoc.Location = new System.Drawing.Point(265, 198);
+            this.btnDatTruoc.Location = new System.Drawing.Point(271, 212);
             this.btnDatTruoc.Name = "btnDatTruoc";
             this.btnDatTruoc.Rotation = 0;
             this.btnDatTruoc.ShowActiveImage = true;
@@ -311,6 +314,7 @@
             this.btnDatTruoc.WaitOnLoad = false;
             this.btnDatTruoc.Zoom = 10;
             this.btnDatTruoc.ZoomSpeed = 10;
+            this.btnDatTruoc.Click += new System.EventHandler(this.btnDatTruoc_Click);
             // 
             // lblHetHan
             // 
@@ -318,7 +322,7 @@
             this.lblHetHan.BackColor = System.Drawing.Color.White;
             this.lblHetHan.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHetHan.ForeColor = System.Drawing.Color.Green;
-            this.lblHetHan.Location = new System.Drawing.Point(585, 271);
+            this.lblHetHan.Location = new System.Drawing.Point(591, 285);
             this.lblHetHan.Name = "lblHetHan";
             this.lblHetHan.Size = new System.Drawing.Size(99, 31);
             this.lblHetHan.TabIndex = 10;
@@ -330,7 +334,7 @@
             this.lblTrong.BackColor = System.Drawing.Color.White;
             this.lblTrong.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrong.ForeColor = System.Drawing.Color.Green;
-            this.lblTrong.Location = new System.Drawing.Point(108, 268);
+            this.lblTrong.Location = new System.Drawing.Point(114, 282);
             this.lblTrong.Name = "lblTrong";
             this.lblTrong.Size = new System.Drawing.Size(75, 31);
             this.lblTrong.TabIndex = 6;
@@ -356,7 +360,7 @@
             this.btnHetHan.ImageSize = new System.Drawing.Size(59, 60);
             this.btnHetHan.ImageZoomSize = new System.Drawing.Size(69, 70);
             this.btnHetHan.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnHetHan.InitialImage")));
-            this.btnHetHan.Location = new System.Drawing.Point(600, 198);
+            this.btnHetHan.Location = new System.Drawing.Point(606, 212);
             this.btnHetHan.Name = "btnHetHan";
             this.btnHetHan.Rotation = 0;
             this.btnHetHan.ShowActiveImage = true;
@@ -377,7 +381,7 @@
             this.lblDatTruoc.BackColor = System.Drawing.Color.White;
             this.lblDatTruoc.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatTruoc.ForeColor = System.Drawing.Color.Green;
-            this.lblDatTruoc.Location = new System.Drawing.Point(245, 270);
+            this.lblDatTruoc.Location = new System.Drawing.Point(251, 284);
             this.lblDatTruoc.Name = "lblDatTruoc";
             this.lblDatTruoc.Size = new System.Drawing.Size(116, 31);
             this.lblDatTruoc.TabIndex = 6;
@@ -389,11 +393,11 @@
             this.lblDangThue.BackColor = System.Drawing.Color.White;
             this.lblDangThue.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDangThue.ForeColor = System.Drawing.Color.Green;
-            this.lblDangThue.Location = new System.Drawing.Point(397, 271);
+            this.lblDangThue.Location = new System.Drawing.Point(398, 285);
             this.lblDangThue.Name = "lblDangThue";
-            this.lblDangThue.Size = new System.Drawing.Size(127, 31);
+            this.lblDangThue.Size = new System.Drawing.Size(143, 31);
             this.lblDangThue.TabIndex = 8;
-            this.lblDangThue.Text = "Đang Thuê";
+            this.lblDangThue.Text = "Nhận Phòng";
             // 
             // btnDangThue
             // 
@@ -415,7 +419,7 @@
             this.btnDangThue.ImageSize = new System.Drawing.Size(59, 60);
             this.btnDangThue.ImageZoomSize = new System.Drawing.Size(69, 70);
             this.btnDangThue.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnDangThue.InitialImage")));
-            this.btnDangThue.Location = new System.Drawing.Point(430, 198);
+            this.btnDangThue.Location = new System.Drawing.Point(436, 212);
             this.btnDangThue.Name = "btnDangThue";
             this.btnDangThue.Rotation = 0;
             this.btnDangThue.ShowActiveImage = true;

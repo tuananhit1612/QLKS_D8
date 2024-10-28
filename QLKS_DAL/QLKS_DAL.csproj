@@ -53,8 +53,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALs\KhachHangDAL\IKhachHangDAL.cs" />
+    <Compile Include="DALs\KhachHangDAL\KhachHangDAL.cs" />
     <Compile Include="DALs\LoaiPhongDAL\ILoaiPhongDAL.cs" />
     <Compile Include="DALs\LoaiPhongDAL\LoaiPhongDAL.cs" />
+    <Compile Include="DALs\PhieuBaoTriPhongDAL\IPhieuBaoTriPhongDAL.cs" />
+    <Compile Include="DALs\PhieuBaoTriPhongDAL\PhieuBaoTriPhongDAL.cs" />
+    <Compile Include="DALs\PhieuDatPhongDAL\PhieuDatPhongDAL.cs" />
+    <Compile Include="DALs\PhieuDatPhongDAL\IPhieuDatPhongDAL.cs" />
+    <Compile Include="DALs\PhieuDonDepPhongDAL\PhieuDonDepPhongDAL.cs" />
+    <Compile Include="DALs\PhieuDonDepPhongDAL\IPhieuDonDepPhongDAL.cs" />
+    <Compile Include="DALs\PhieuHetHanPhongDAL\PhieuHetHanPhongDAL.cs" />
+    <Compile Include="DALs\PhieuHetHanPhongDAL\IPhieuHetHanPhongDAL.cs" />
+    <Compile Include="DALs\PhieuPhanPhongDAL\IPhieuPhanPhongDAL.cs" />
+    <Compile Include="DALs\PhieuPhanPhongDAL\PhieuPhanPhongDAL.cs" />
+    <Compile Include="DALs\PhieuThuePhongDAL\IPhieuThuePhongDAL.cs" />
+    <Compile Include="DALs\PhieuThuePhongDAL\PhieuThuePhongDAL.cs" />
     <Compile Include="DALs\PhongDAL\IPhongDAL.cs" />
     <Compile Include="DALs\PhongDAL\PhongDAL.cs" />
     <Compile Include="DALs\TangDAL\ITangDAL.cs" />

@@ -51,14 +51,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUSs\KhachHangBUS\KhachHangBUS.cs" />
+    <Compile Include="BUSs\KhachHangBUS\IKhachHangBUS.cs" />
     <Compile Include="BUSs\LoaiPhongBUS\ILoaiPhongBUS.cs" />
     <Compile Include="BUSs\LoaiPhongBUS\LoaiPhongBUS.cs" />
+    <Compile Include="BUSs\PhongBaoTriBUS\IPhongBaoTriBUS.cs" />
+    <Compile Include="BUSs\PhongBaoTriBUS\PhongBaoTriBUS.cs" />
     <Compile Include="BUSs\PhongBUS\IPhongBUS.cs" />
     <Compile Include="BUSs\PhongBUS\PhongBUS.cs" />
+    <Compile Include="BUSs\PhongDangThueBUS\IPhongDangThueBUS.cs" />
+    <Compile Include="BUSs\PhongDangThueBUS\PhongDangThueBUS.cs" />
+    <Compile Include="BUSs\PhongDatTruocBUS\PhongDatTruocBUS.cs" />
+    <Compile Include="BUSs\PhongDatTruocBUS\IPhongDatTruocBUS.cs" />
+    <Compile Include="BUSs\PhongDonDepBUS\PhongDonDepBUS.cs" />
+    <Compile Include="BUSs\PhongDonDepBUS\IPhongDonDepBUS.cs" />
+    <Compile Include="BUSs\PhongHetHanBUS\IPhongHetHanBUS.cs" />
+    <Compile Include="BUSs\PhongHetHanBUS\PhongHetHanBUS.cs" />
     <Compile Include="BUSs\TangBUS\ITangBUS.cs" />
     <Compile Include="BUSs\TangBUS\TangBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\KhachHangViewModel.cs" />
     <Compile Include="ViewModels\LoaiPhongViewModel.cs" />
+    <Compile Include="ViewModels\PhieuPhanPhongViewModel.cs" />
+    <Compile Include="ViewModels\PhieuThuePhongViewModel.cs" />
+    <Compile Include="ViewModels\PhongDangBaoTriViewModel.cs" />
+    <Compile Include="ViewModels\PhongDangDonDepViewModel.cs" />
+    <Compile Include="ViewModels\PhongDangThueViewModel.cs" />
+    <Compile Include="ViewModels\PhongDatTruocViewModel.cs" />
+    <Compile Include="ViewModels\PhongHetHanViewModel.cs" />
     <Compile Include="ViewModels\PhongViewModel.cs" />
     <Compile Include="ViewModels\TangViewModel.cs" />
   </ItemGroup>
@@ -71,7 +91,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BUSs\PhieuPhanPhongBUS\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

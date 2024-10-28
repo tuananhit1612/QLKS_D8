@@ -11,6 +11,12 @@ namespace QLKS_BUS.BUSs.PhongBUS
     {
         List<PhongViewModel> GetAllPhong();
         List<PhongViewModel> GetAllPhongByTang(string soTang);
+        PhongViewModel GetPhongTrongByMaPhong(string maPhong);
+        PhongViewModel GetPhongByMaPhong(string maPhong);
+        PhongViewModel GetPhongTrongByMaPhongLoaiPhong(string maPhong,string loaiPhong);
+        PhongHetHanViewModel GetPhongHetHanByMaPhong(string maPhong);
         int DemTrangThaiPhong(int k,string loaiphong);
+
+        void InserOrUpdatePhongBUS(PhongViewModel p);
     }
 }

@@ -25,10 +25,10 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
             _phongBUS = new PhongBUS();
             _tangBUS= new TangBUS();
             AddFloors(0);
-            ThemThaiPhong();
+            DemTrangThaiPhong();
 
         }
-        private void ThemThaiPhong()
+        private void DemTrangThaiPhong()
         {
             string LoaiPhong = cmbLoaiPhong.Text;
             btnAll.LabelText = "(" + _phongBUS.DemTrangThaiPhong(0,LoaiPhong).ToString() + ")"; // 0 là tất cả trạng thái nha...
@@ -41,31 +41,23 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
         }
         private void AddFloors(int k)
         {
-            //Phong phong = new Phong();
-            //flowLayoutPanel1.Controls.Clear();
-            //for (int i = 1; i <= phong.SoTang; i++)
-            //{
-            //    UC_Tang uc = new UC_Tang(i,cmbLoaiPhong.Text);
-            //    switch(k)
-            //    {
-            //        case 0: uc.AllRooms(i); break;
-            //        case 1: uc.XuLyPhongTrong(i); break;
-            //        case 2: uc.XuLyPhongDatTruoc(i); break;
-            //        case 3: uc.XuLyPhongDonDep(i); break;
-            //        case 4: uc.XuLyPhongHetHan(i); break;
-            //        case 5: uc.XuLyPhongSuaChua(i); break;
-            //        case 6: uc.XuLyPhongDangThue(i); break;
-            //    }
-                
-            //    flowLayoutPanel1.Controls.Add(uc);
-
-            //}
             var tang = _tangBUS.GetALLTang();
-            foreach(var t in tang)
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var t in tang)
             {
-                UC_Tang uc = new UC_Tang();
-                uc.SoTang = t.maTang;
-                uc.ThemSoTang();
+                UC_Tang uc = new UC_Tang(t.maTang,cmbLoaiPhong.Text);
+               
+                string sotang = t.maTang;
+                switch (k)
+                {
+                    case 0: uc.XuLyTatCaPhongByTang(t.maTang); break;
+                    case 1: uc.XuLyPhongTrong(sotang); break;
+                    case 2: uc.XuLyPhongDatTruoc(sotang); break;
+                    case 3: uc.XuLyPhongDonDep(sotang); break;
+                    case 4: uc.XuLyPhongHetHan(sotang); break;
+                    case 5: uc.XuLyPhongSuaChua(sotang); break;
+                    case 6: uc.XuLyPhongDangThue(); break;
+                }
                 flowLayoutPanel1.Controls.Add(uc);
             }
 
@@ -123,13 +115,14 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
         {
             flowLayoutPanel1.Controls.Clear();
             AddFloors(0);
-            ThemThaiPhong();
+            DemTrangThaiPhong();
+            cmbLoaiPhong.SelectedIndex = 0;
         }
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             AddFloors(0);
-            ThemThaiPhong();
+            DemTrangThaiPhong();
         }
     }
 }

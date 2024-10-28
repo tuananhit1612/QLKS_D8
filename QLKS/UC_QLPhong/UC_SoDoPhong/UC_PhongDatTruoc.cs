@@ -1,5 +1,8 @@
 ﻿using QLKS.DAO;
 using QLKS.DTO;
+using QLKS_BUS.BUSs.PhongDangThueBUS;
+using QLKS_BUS.BUSs.PhongDatTruocBUS;
+using QLKS_DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,28 +17,25 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
 {
     public partial class UC_PhongDatTruoc : UserControl
     {
+        PhongDatTruocBUS phongDatTruocBUS;
         public string MaPhong { get; set; }
         public UC_PhongDatTruoc(string maPhong)
         {
             InitializeComponent();
-            MaPhong = maPhong;
+            this.MaPhong = maPhong;
+            phongDatTruocBUS = new PhongDatTruocBUS();
             ThemThongTin();
         }
         void ThemThongTin()
         {
-            //List<PhongDatTruoc> data = PhongDAO.Instance.GetPhongDatTruoc(MaPhong);
-            //if (data.Count > 0)
-            //{
-            //    lblMaPhong.Text = data[0].MaPhong.ToString();
-            //    lblNgayNhanPhong.Text = data[0].NgayDen.ToString();
-            //    lblTenKhachHang.Text = data[0].TenKhachHang.ToString();
-            //    lblTinhTrang.Text = data[0].TinhTrang.ToString();
-            //    lblTenLoaiPhong.Text = data[0].TenLoaiPhong.ToString();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Không có dữ liệu cho phòng này. "+MaPhong+"");
-            //}
+            var data = phongDatTruocBUS.getPhongDatTruocByMaPhong(MaPhong);
+
+            lblMaPhong.Text = data.maPhong.ToString();
+            lblNgayNhanPhong.Text = data.ngayBatDau.Value.ToString();
+            lblTenKhachHang.Text = data.tenKH.ToString();
+            lblTinhTrang.Text = data.tinhTrang.ToString();
+
+            lblTenLoaiPhong.Text = data.tenLoaiPhong.ToString();
         }
 
         private void lblTenLoaiPhong_Click(object sender, EventArgs e)

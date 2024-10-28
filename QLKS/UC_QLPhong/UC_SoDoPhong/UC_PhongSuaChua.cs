@@ -1,5 +1,7 @@
 ﻿using QLKS.DAO;
 using QLKS.DTO;
+using QLKS_BUS.BUSs.PhongBaoTriBUS;
+using QLKS_BUS.BUSs.PhongBUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,31 +17,25 @@ namespace QLKS.UC_QLKhachSan.UC_SoDoPhong
 
     public partial class UC_PhongSuaChua : UserControl
     {
+        PhongBaoTriBUS phongBaoTriBUS;
         private string maPhong { get; set; }
         public UC_PhongSuaChua(string MaPhong)
         {
             InitializeComponent();
-            maPhong = MaPhong;
+            this.maPhong = MaPhong;
+            phongBaoTriBUS = new PhongBaoTriBUS();
             AddThongTin();
         }
         void AddThongTin()
         {
-            //List<PhongSuaChua> data = PhongDAO.Instance.GetPhongSuaChua(maPhong);
-            //if (data.Count > 0)
-            //{
-            //    lblMaPhong.Text = data[0].MaPhong.ToString();
-            //    lblTenLoaiPhong.Text = data[0].TenLoaiPhong.ToString();
-            //    lblTinhTrang.Text = data[0].TinhTrang.ToString();
-            //    //lblGhiChu.Text = data[0].GhiChu.ToString();
-            //   // lblNgayBatDau.Text = data[0].NgayBatDau.ToString();
-            //    //lblNgayKetThuc.Text = data[0].NgayketThuc.ToString();
-            //    lblThoiGiamBatDau.Text = data[0].ThoiGianBatDau.ToString();
-            //    lblThoiGianKetThuc.Text = data[0].ThoiGianKetThuc.ToString();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Không có dữ liệu cho phòng này.");
-            //}
+            var phong = phongBaoTriBUS.GetPhongBaoTriByMaPhong(maPhong);
+            lblTenLoaiPhong.Text = phong.tenLoaiPhong;
+            lblMaPhong.Text = phong.maPhong;
+            lblTinhTrang.Text = phong.tinhTrang;
+            lblThoiGiamBatDau.Text = phong.ngayGioBaoTri?.ToString("dd/MM/yy") ?? "N/A";
+            lblThoiGianKetThuc.Text = phong.ngayGioBaoTriKetThuc?.ToString("dd/MM/yy") ?? "N/A";
+
+
         }
     }
 }
